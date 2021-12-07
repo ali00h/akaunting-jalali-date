@@ -1,0 +1,18 @@
+{
+    "alias": "jalali-date",
+    "icon": "fa fa-cog",
+    "version": "1.0.0",
+    "active": 1,
+    "providers": [
+        "Modules\\JalaliDate\\Providers\\Event",
+        "Modules\\JalaliDate\\Providers\\Blade",
+        "Modules\\JalaliDate\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "reports": [],
+    "widgets": [],
+    "settings": [],
+    "extra-modules": {}
+}
