@@ -6,6 +6,7 @@
     "providers": [
         "Modules\\JalaliDate\\Providers\\Event",
         "Modules\\JalaliDate\\Providers\\Blade",
+        "Modules\\JalaliDate\\Providers\\Form",
         "Modules\\JalaliDate\\Providers\\Main"
     ],
     "aliases": {},
