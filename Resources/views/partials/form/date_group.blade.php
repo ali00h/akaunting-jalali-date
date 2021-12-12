@@ -1,49 +1,47 @@
 @stack($name . '_input_start')
 
 
-<div
-    class="form-group {{ $col }}{{ isset($attributes['required']) ? ' required' : '' }}{{ isset($attributes['readonly']) ? ' readonly' : '' }}{{ isset($attributes['disabled']) ? ' disabled' : '' }}"
-    @if (isset($attributes['show']))
-    v-if="{{ $attributes['show'] }}"
-    @endif
-    @if (isset($attributes[':disabled']))
-    :class="[{'disabled' : {{ $attributes[':disabled'] }}}, {'has-error': {{ isset($attributes['v-error']) ? $attributes['v-error'] : 'form.errors.get("' . $name . '")' }}}]"
-    @else
-    :class="[{'has-error': {{ isset($attributes['v-error']) ? $attributes['v-error'] : 'form.errors.get("' . $name . '")' }}}]"
-    @endif
->
-    @if (!empty($text))
-        {!! Form::label($name, $text, ['class' => 'form-control-label'])!!}
-    @endif
+    <div
+        class="form-group {{ $col }}{{ isset($attributes['required']) ? ' required' : '' }}{{ isset($attributes['readonly']) ? ' readonly' : '' }}{{ isset($attributes['disabled']) ? ' disabled' : '' }}"
+        @if (isset($attributes['show']))
+        v-if="{{ $attributes['show'] }}"
+        @endif
+        @if (isset($attributes[':disabled']))
+        :class="[{'disabled' : {{ $attributes[':disabled'] }}}, {'has-error': {{ isset($attributes['v-error']) ? $attributes['v-error'] : 'form.errors.get("' . $name . '")' }}}]"
+        @else
+        :class="[{'has-error': {{ isset($attributes['v-error']) ? $attributes['v-error'] : 'form.errors.get("' . $name . '")' }}}]"
+        @endif
+    >
+        @if (!empty($text))
+            {!! Form::label($name, $text, ['class' => 'form-control-label'])!!}
+        @endif
 
-    <div class="input-group input-group-merge {{ $group_class }}">
-        <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <i class="fa fa-{{ $icon }}"></i>
-                </span>
+        <div class="input-group input-group-merge {{ $group_class }}">
+            <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-{{ $icon }}"></i>
+                        </span>
+            </div>
+            {!! Form::text($name . "persianpicker", "", array_merge([
+                'class' => 'form-control persian-date-picker',
+                'autocomplete' => 'off',
+                'placeholder' => trans('general.form.enter', ['field' => $text]),
+            ],['id' => $name . 'persianpicker'])) !!}
+
+
         </div>
-        {!! Form::text($name, $value, array_merge([
-            'class' => 'form-control',
-            'data-name' => $name,
-            'data-value' => $value,
-            'placeholder' => trans('general.form.enter', ['field' => $text]),
-            'v-model' => !empty($attributes['v-model']) ? $attributes['v-model'] : (!empty($attributes['data-field']) ? 'form.' . $attributes['data-field'] . '.'. $name : 'form.' . $name),
-        ], $attributes)) !!}
+
+        <div class="invalid-feedback d-block"
+             v-if="{{ isset($attributes['v-error']) ? $attributes['v-error'] : 'form.errors.has("' . $name . '")' }}"
+             v-html="{{ isset($attributes['v-error-message']) ? $attributes['v-error-message'] : 'form.errors.get("' . $name . '")' }}">
+        </div>
     </div>
-
-    <div class="invalid-feedback d-block"
-         v-if="{{ isset($attributes['v-error']) ? $attributes['v-error'] : 'form.errors.has("' . $name . '")' }}"
-         v-html="{{ isset($attributes['v-error-message']) ? $attributes['v-error-message'] : 'form.errors.get("' . $name . '")' }}">
-    </div>
-</div>
-
-
 
 
 
 
     <akaunting-date
-        class="{{ $col }}{{ isset($attributes['required']) ? ' required' : '' }}"
+        class="{{ $col }}{{ isset($attributes['required']) ? ' required' : '' }} {{ 'cpdp' . $name }}"
 
         @if (!empty($attributes['v-error']))
         :form-classes="[{'has-error': {{ $attributes['v-error'] }} }]"
@@ -68,20 +66,20 @@
         :date-config="{
             wrap: true, // set wrap to true only when using 'input-group'
             allowInput: false,
-            @if (!empty($attributes['show-date-format']))
+        @if (!empty($attributes['show-date-format']))
             altInput: true,
             altFormat: '{{ $attributes['show-date-format'] }}',
-            @endif
-            @if (!empty($attributes['date-format']))
+        @endif
+        @if (!empty($attributes['date-format']))
             dateFormat: '{{ $attributes['date-format'] }}',
-            @endif
-            @if (!empty($attributes['min-date']))
+        @endif
+        @if (!empty($attributes['min-date']))
             minDate: {{ $attributes['min-date'] }},
-            @endif
-            @if (!empty($attributes['max-date']))
+        @endif
+        @if (!empty($attributes['max-date']))
             maxDate: {{ $attributes['max-date'] }},
-            @endif
-        }"
+        @endif
+            }"
 
         locale="{{ language()->getShortCode() }}"
 
@@ -132,4 +130,13 @@
         @endif
     ></akaunting-date>
 
+
 @stack($name . '_input_end')
+
+
+@push('scripts_end')
+    <link rel="stylesheet" href="{{ asset('modules\JalaliDate\Resources\assets\sass\persian-datepicker.min.css?v=' . module_version('jalali-date')) }}"/>
+    <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-date.min.js?v=' . module_version('jalali-date')) }}"></script>
+    <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-datepicker.min.js?v=' . module_version('jalali-date')) }}"></script>
+    <script type="module" src="{{ asset('modules\JalaliDate\Resources\assets\js\jalali-date.js?v=' . module_version('jalali-date')) }}"></script>
+@endpush
