@@ -41,7 +41,7 @@
 
 
     <akaunting-date
-        class="{{ $col }}{{ isset($attributes['required']) ? ' required' : '' }} {{ 'cpdp' . $name }}"
+        class="{{ $col }}{{ isset($attributes['required']) ? ' required' : '' }} {{ 'cpdp' . $name }} d-none"
 
         @if (!empty($attributes['v-error']))
         :form-classes="[{'has-error': {{ $attributes['v-error'] }} }]"

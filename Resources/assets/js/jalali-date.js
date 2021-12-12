@@ -51,8 +51,22 @@ $(document).ready(function() {
 
         let timeInMillis = Date.parse($(this).val());
         console.log(timeInMillis);
-        var pd = $("#" + datepicker_class + "persianpicker").persianDatepicker();
-        pd.setDate(timeInMillis);
+        if ($("#" + datepicker_class + "persianpicker").length > 0) {
+            var pd = $("#" + datepicker_class + "persianpicker").persianDatepicker({
+                format: 'YYYY/MM/DD',
+                onSelect: function(unix){
+                    //console.log($(this)[0].model.input.model);
+                    let elementId = $(this)[0].model.inputElement.id;
+                    let datepickerId = elementId.replace("persianpicker","");
+                    let convertDate = timeConverter(unix);
+                    console.log('datepicker id : ' + datepickerId);
+                    console.log('datepicker select : ' + convertDate);
+                    $(".cpdp" + datepickerId)[0].__vue__.$parent.real_model = convertDate;
+                }
+            });
+            pd.setDate(timeInMillis);
+        }
+
 
     });
 
