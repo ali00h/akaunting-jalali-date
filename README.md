@@ -7,6 +7,6 @@ It automatically converts all dates to jalali date and change gregorian date pic
 
 * Download [Module](https://github.com/ali00h/akaunting-jalali-date/archive/refs/heads/main.zip) and extract it.
 
-* Copy all contents of `akaunting-jalali-date-main` to `JalaliDate` directory
+* Copy all contents of `akaunting-jalali-date-main` to `JalaliDate` directory.
 
 

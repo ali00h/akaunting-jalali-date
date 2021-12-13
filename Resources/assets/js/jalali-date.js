@@ -7,8 +7,8 @@ $(document).ready(function() {
             let elementId = $(this)[0].model.inputElement.id;
             let datepickerId = elementId.replace("persianpicker","");
             let convertDate = timeConverter(unix);
-            console.log('datepicker id : ' + datepickerId);
-            console.log('datepicker select : ' + convertDate);
+            //console.log('datepicker id : ' + datepickerId);
+            //console.log('datepicker select : ' + convertDate);
             $(".cpdp" + datepickerId)[0].__vue__.$parent.real_model = convertDate;
         }
 
@@ -59,8 +59,8 @@ $(document).ready(function() {
                     let elementId = $(this)[0].model.inputElement.id;
                     let datepickerId = elementId.replace("persianpicker","");
                     let convertDate = timeConverter(unix);
-                    console.log('datepicker id : ' + datepickerId);
-                    console.log('datepicker select : ' + convertDate);
+                    //console.log('datepicker id : ' + datepickerId);
+                    //console.log('datepicker select : ' + convertDate);
                     $(".cpdp" + datepickerId)[0].__vue__.$parent.real_model = convertDate;
                 }
             });
