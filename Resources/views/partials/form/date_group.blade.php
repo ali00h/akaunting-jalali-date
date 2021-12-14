@@ -130,13 +130,14 @@
         @endif
     ></akaunting-date>
 
+    @push('body_scripts')
+        <link rel="stylesheet" href="{{ asset('modules\JalaliDate\Resources\assets\sass\persian-datepicker.min.css?v=' . module_version('jalali-date')) }}"/>
+        <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-date.min.js?v=' . module_version('jalali-date')) }}"></script>
+        <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-datepicker.min.js?v=' . module_version('jalali-date')) }}"></script>
+        <script src="{{ asset('modules\JalaliDate\Resources\assets\js\jalali-date.js?v=' . module_version('jalali-date')) }}"></script>
+
+    @endpush
 
 @stack($name . '_input_end')
 
 
-@push('scripts_end')
-    <link rel="stylesheet" href="{{ asset('modules\JalaliDate\Resources\assets\sass\persian-datepicker.min.css?v=' . module_version('jalali-date')) }}"/>
-    <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-date.min.js?v=' . module_version('jalali-date')) }}"></script>
-    <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-datepicker.min.js?v=' . module_version('jalali-date')) }}"></script>
-    <script type="module" src="{{ asset('modules\JalaliDate\Resources\assets\js\jalali-date.js?v=' . module_version('jalali-date')) }}"></script>
-@endpush
