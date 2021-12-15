@@ -11,5 +11,4 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('Resources/assets/js/jalali-date.js', 'Resources/assets/js/jalali-date.min.js')
-    .sass('./../../resources/assets/sass/app.scss', './../../public/css');
+mix.js('Resources/assets/js/jalali-date.js', 'Resources/assets/js/jalali-date.min.js');

@@ -13,7 +13,7 @@ function timeConverter(UNIX_timestamp){
     return time;
 }
 function flatpickrFinderForPDP() {
-    console.log("flatpickrFinderForPDP started!");
+    //console.log("flatpickrFinderForPDP started!");
     $(".flatpickr-input").each(function () {
         let datepicker_classes = $(this).parent().parent().attr('class').split(" ");
         let datepicker_class = "";
@@ -54,5 +54,3 @@ function flatpickrFinderForPDP() {
 $( document ).ready(function() {
     flatpickrFinderForPDP();
 });
-
-

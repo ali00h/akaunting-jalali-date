@@ -25,6 +25,7 @@
             {!! Form::text($name . "persianpicker", "", array_merge([
                 'class' => 'form-control persian-date-picker',
                 'autocomplete' => 'off',
+                'onfocus' => 'flatpickrFinderForPDP();',
                 'placeholder' => trans('general.form.enter', ['field' => $text]),
             ],['id' => $name . 'persianpicker'])) !!}
 
@@ -130,14 +131,4 @@
         @endif
     ></akaunting-date>
 
-    @push('body_scripts')
-        <link rel="stylesheet" href="{{ asset('modules\JalaliDate\Resources\assets\sass\persian-datepicker.min.css?v=' . module_version('jalali-date')) }}"/>
-        <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-date.min.js?v=' . module_version('jalali-date')) }}"></script>
-        <script src="{{ asset('modules\JalaliDate\Resources\assets\js\persian-datepicker.min.js?v=' . module_version('jalali-date')) }}"></script>
-        <script src="{{ asset('modules\JalaliDate\Resources\assets\js\jalali-date.js?v=' . module_version('jalali-date')) }}"></script>
-
-    @endpush
-
 @stack($name . '_input_end')
-
-
