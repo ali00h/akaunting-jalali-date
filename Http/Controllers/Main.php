@@ -6,6 +6,7 @@ use App\Abstracts\Http\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+
 class Main extends Controller
 {
     /**
@@ -15,6 +16,7 @@ class Main extends Controller
      */
     public function index()
     {
+
         return $this->response('jalali-date::index');
     }
 

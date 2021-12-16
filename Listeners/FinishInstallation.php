@@ -4,7 +4,7 @@ namespace Modules\JalaliDate\Listeners;
 
 use App\Events\Module\Installed as Event;
 use App\Traits\Permissions;
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 
 class FinishInstallation
 {
@@ -25,7 +25,7 @@ class FinishInstallation
         }
 
         $this->updatePermissions();
-        
+
         Artisan::call('view:clear');
         //$this->callSeeds();
     }

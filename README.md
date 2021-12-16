@@ -9,4 +9,6 @@ It automatically converts all dates to jalali date and change gregorian date pic
 
 * Copy all contents of `akaunting-jalali-date-main` to `JalaliDate` directory.
 
+* Clear all files except `.gitignore` in `storage/framework/views` directory.
+
 
