@@ -25,7 +25,8 @@ class FinishInstallation
         }
 
         $this->updatePermissions();
-
+        
+        Artisan::call('view:clear');
         //$this->callSeeds();
     }
 
